@@ -1,0 +1,33 @@
+
+ /* Ref_2.txt ==> 170~171 page, STEP_15_IO_1.java */
+
+ import	java.io.*;
+
+ class IO_12 {
+	void io_test() {
+		int	b1, b2, b3, n;
+		byte[]  bs = new byte[3];
+
+		FileInputStream fis = null;
+
+		try {
+			fis = new FileInputStream("data.bin"); 
+		} catch (FileNotFoundException e) { 
+			System.err.println("Can't open 'data.bin' for input...");
+			System.exit(1);
+		}
+		System.out.println("io_12...");
+
+		try {                                                 
+			b1 = fis.read(); b2 = fis.read(); b3 = fis.read();
+			n = fis.read(bs); // fis.read(bs, 0, 3); 
+
+			System.out.printf("%02x %02x %02x %02x %02x %02x\n", 
+			    b1, b2, b3, (int)bs[0], (int)bs[1], (int)bs[2]);
+		} catch (IOException e) { 
+			System.err.println("File read error...");
+
+			System.exit(2);
+		}
+	}
+ }

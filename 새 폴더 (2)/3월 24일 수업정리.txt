@@ -1,0 +1,133 @@
+객체지향 프로그래밍 STEP_05
+
+캡슐화(Encapsulation)
+
+-관련된 데이터(변수)의 저장 구조를 단단히 뭉치도록 설계한다.
+
+ㄴC에서는 구조체를 사용하거나 단독 변수를 사용하지만 객체지향 언어에선 CLASS로 묶는데, 이것을 캡슐화라 한다.
+
+
+
+정보은닉(Information Hiding)
+
+-필드에 대한 접근을 제한하여 필드를 보호한다. 즉, 필드가 보이지 않게 한다.
+
+-메소드는 멤버변수에 접근하는 방법. 메소드에서 허용된 값이 아니면 접근이 불가하여 잘못된 데이터가 접근하는것을 원천 방지한다.
+
+-클래스 내 필드에 대한 직접적인 접근을 불허하는 것은 클래스 내 필드를 감추는 결과이므로, 이러한 개념을 정보은닉이라고 한다.
+
+ㄴC언어는 함수에 데이터를 넣는 개념이고, 객체지향언어에서는 데이터 옆에 데이터의 접근 통로인 메소드를 붙이는 개념이다.
+
+
+
+객체 생성자 (Object Creater)
+
+-객체가 new 연산자에 의해 생성될때 호출되는 메소드를 생성자라고 함
+
+-생성자는 내부적으로 호출되므로 리턴값이 있을수 없고, 따라서 타입도 없다.
+
+-클래스의 이름과 동일한 메소드는 자동적으로 생성자로 인식된다.
+
+-생성자에 대한 매개 변수는 new연산자에 의해 전달된다.
+
+- 어떤 생성자도 정의되어있지 않으면 자바 컴파일러가 매개변수와 처리코드가 없는 기본 생성자를 넣어준다.
+
+
+
+package STEP_05.W4;
+
+
+
+import java.io.*;
+
+
+
+public class Point_4 {
+
+    int x;
+
+    int y;
+
+    Point_4() {x =9; y=9;}                                      //1
+
+    Point_4(int x,int y) {this.x=x; this.y=y;}                  //2
+
+    Point_4(int x) {this.x =x; this.y=9;}                       //3
+
+
+
+    void set_xy(int x, int y){
+
+        this.x=x; this.y=y;
+
+    }
+
+    void set_x(int x){
+
+        this.x=x; y=9;
+
+    }
+
+    void set_y(int y){
+
+        this.y=y; x=9;
+
+    }
+
+    int get_x(){
+
+        return x;
+
+    }
+
+    int get_y(){
+
+        return y;
+
+    }
+
+}
+
+
+
+class STEP_05_Point_4{
+
+    public static void main(String args[]) throws IOException{
+
+        Point_4 pnt1, pnt2, pnt3;
+
+        int x,y;
+
+
+
+        x=System.in.read()-'0';
+
+        y=System.in.read()-'0';
+
+
+
+        pnt1=new Point_4();         //4
+
+        pnt2=new Point_4(x,y);      //5
+
+        pnt3=new Point_4(7);      //6
+
+
+
+        System.out.printf("%d,%d,%d\n", pnt1.get_x(),pnt2.get_x(),pnt3.get_x());
+
+        System.out.printf("%d,%d,%d\n", pnt1.get_y(),pnt2.get_y(),pnt3.get_y());
+
+
+
+    }
+
+}
+
+4->1
+
+5->2
+
+6->3
+
+이 방향으로 참조한다.
